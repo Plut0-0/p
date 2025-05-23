@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Document</title>
+</head>
+<body>
+<h1>Students</h1>
+<button onclick="loadStudents()">Load Students</button>
+<pre id="output"></pre>
+
+<script>
+    function loadStudents() {
+    fetch('')
+        .then(response => {
+        if (!response.ok) throw new Error('Network response was not ok');
+        return response.json();
+        })
+        .then(data => {
+        const output = document.getElementById('output');
+        output.textContent = JSON.stringify(data, null, 2);
+        })
+        .catch(error => {
+        document.getElementById('output').textContent = 'Error: ' + error;
+        });
+    }
+</script>
+</body>
+</html>
