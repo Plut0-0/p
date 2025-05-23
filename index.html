@@ -24,6 +24,19 @@
         .catch(error => {
         document.getElementById('output').textContent = 'Error: ' + error;
         });
+
+    fetch('https://theapi-qovn.onrender.com/students')
+        .then(response => {
+        if (!response.ok) throw new Error('Network response was not ok');
+        return response.json();
+        })
+        .then(data => {
+        const output = document.getElementById('output');
+        output.textContent = JSON.stringify(data, null, 2);
+        })
+        .catch(error => {
+        document.getElementById('output').textContent = 'Error: ' + error;
+        });
     }
 </script>
 </body>
